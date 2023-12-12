@@ -1,0 +1,77 @@
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <!-- HEADER -->
+    <%- include("../partials/header.ejs") %><!-- HERO -->
+
+    <!-- MAIN -->
+    <main class="container">
+        <section class="item-section">
+            <div class="item-picture">
+                <div class="image-container"
+                    style="background-image: url('<%= item.img_front %>')">
+                </div>
+                <div class="image-back"
+                    style="background-image: url('<%= item.img_back %>')">
+                </div>
+            </div>
+            <article class="item-article">
+                <h4>
+                    <%= item.licence_name %>
+                </h4>
+                <h3>
+                    <%= item.product_name %>
+                </h3>
+                <p class="item-description">
+                    <%= item.product_description %>
+                </p>
+                <span class="item-precio">$
+                    <%= item.product_price %>
+                </span>
+
+                <form class="item-agregar_al_carrito">
+                    <input id="quantity" class="item_input" type="text"
+                        name="quantity" placeholder="0">
+                    <div class="item_div_add_substract">
+                        <button id="add" class="item_add"
+                            type="button">+</button>
+                        <button id="subtract" class="item_substract"
+                            type="button">-</button>
+                    </div>
+                    <button class="item-button-agregar_al_carrito">Agregar al
+                        carrito</button>
+                </form>
+                <p class="item-metodos_de_pago"><u>Ver métodos de pago</u> - 3
+                    CUOTAS SIN INTERÉS</p>
+
+            </article>
+        </section>
+        <section class="productos_relacionados">
+            <h2>PRODUCTOS RELACIONADOS</h2>
+            <%- include("../partials/carrousel.ejs") %>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <%- include("../partials/footer.ejs") %>
+    <script src="/js/item.js"></script>
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            startAt: 0,
+            perView: 3,
+            gap: 30,
+            autoplay: 2000,
+            breakpoints: {
+                991: {
+                    perView: 2
+                },
+                768: {
+                    perView: 1
+                }
+            }
+        }).mount();
+    </script>
+</body>
+
+</html>
